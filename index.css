@@ -24,8 +24,6 @@ body{
 }
 
 .frame{
-    height: 300px;
-    width: 300px;
     position: relative;
     clip-path: path(var(--rectangle));
 }
@@ -34,13 +32,25 @@ body{
     clip-path: path(var(--badge));
     cursor: pointer;
 }
+
 img{
     
     height: 350px;
 }
-.star,.star:hover,.pentagon:focus{
+.badge,.badge:focus{
+    clip-path: path(var(--badge));
+}
+.star,.star:focus{
     clip-path: path(var(--star));
 }
-.pentagon,.pentagon:hover,.pentagon:focus{
-    clip-path: path(var(--star));
+.pentagon,.pentagon:focus{
+    clip-path: path(var(--pentagon));
+}
+
+.btn-container{
+    display: flex;
+    
+}
+.btn{
+    margin: 10px;
 }
