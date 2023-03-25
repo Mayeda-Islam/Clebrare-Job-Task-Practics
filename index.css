@@ -1,0 +1,37 @@
+:root {
+
+ --rectangle: "M150 0L127.55 24.5125L97.9125 9.05L85.3125 39.65L52.1 35.1L50.9 68.1L18.1125 75L28.4 106.412L0 123.95L20.6125 150.013L0 176.05L28.4 193.588L18.1125 225L50.9 231.912L52.1 264.9L85.3125 260.363L97.9125 290.963L127.55 275.5L150 300L172.462 275.5L202.087 290.963L214.713 260.363L247.913 264.9L249.113 231.912L281.9 225L271.6 193.588L300 176.05L279.387 150.013L300 123.95L271.6 106.412L281.9 75L249.113 68.1L247.913 35.1L214.713 39.65L202.087 9.05L172.462 24.5125L150 0Z";
+
+ --badge:"M300 50C300 22.4 277.6 0 250 0H50C22.4 0 0 22.4 0 50V250C0 277.6 22.4 300 50 300H250C277.6 300 300 277.6 300 250V50Z"
+}
+
+html,body{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: white;
+}
+.container{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.frame{
+    height: 300px;
+    width: 300px;
+    position: relative;
+    clip-path: path(var(--rectangle));
+}
+.frame:hover,
+.frame:focus{
+    clip-path: path(var(--badge));
+    cursor: pointer;
+}
+img{
+    
+    height: 350px;
+}
