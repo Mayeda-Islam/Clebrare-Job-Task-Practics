@@ -1,3 +1,18 @@
+const image_input = document.getElementById("image_input");
+
+let displayImage = "";
+image_input.addEventListener("change", function () {
+  const reader = new FileReader();
+  reader.addEventListener("load", () => {
+    displayImage = reader.result;
+    document.querySelector(
+      "#display_image"
+    ).style.backgroundImage = `url(${displayImage})`;
+  });
+  reader.readAsDataURL(this.files[0]);
+});
+
+// different shapes of image
 document.getElementById("frame").addEventListener("click", () => {
   const frame = document.getElementById("frame");
   document.getElementById("frame").classList.toggle("pentagon");

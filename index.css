@@ -46,11 +46,18 @@ img{
 .pentagon,.pentagon:focus{
     clip-path: path(var(--pentagon));
 }
-
+g
 .btn-container{
     display: flex;
     
 }
 .btn{
     margin: 10px;
+}
+#display_image{
+    width: 375px;
+    height: 211px;
+    border: 1px solid black;
+    background-position: center;
+    background-size: cover;
 }
