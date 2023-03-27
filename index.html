@@ -12,6 +12,13 @@
       integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
       crossorigin="anonymous"
     />
+    <!-- googlw font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"
+      rel="stylesheet"
+    />
     <!-- <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css"
@@ -19,22 +26,31 @@
   </head>
   <body>
     <div class="container">
-      <label class="btn btn-primary">
+      <div class="border w-75 text-center p-4 border-1 rounded-2">
+        <h3>Upload Image</h3>
+        <label for="image_input" class="btn btn-primary"
+          >Choose from Device</label
+        >
         <input
           type="file"
           name="image"
           accept="image/png, image/jpg"
           id="image_input"
+          class="d-none"
         />
-      </label>
-      <div class="" id="display-frame">
-        <img id="display_image" src="" alt="" />
       </div>
+
+      <div class="mt-4" id="display-frame">
+        <img src="/image/asset/user.png" id="display_image" src="" alt="" />
+      </div>
+
+      <!-- modal trigger label -->
       <label
         id="modalTriggerlevel"
         data-bs-target="#myModal"
         data-bs-toggle="modal"
       ></label>
+      <!-- modal start -->
       <div
         class="modal fade"
         id="myModal"
@@ -46,16 +62,19 @@
       >
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                Modal title
+            <button
+              type="button"
+              class="btn-close flex justify-content-end"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <div class="">
+              <h1
+                class="modal-title mt-4 mb-2 text-center fs-5"
+                id="staticBackdropLabel"
+              >
+                Uploaded Image
               </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
             </div>
             <div class="modal-body w-75 h-50 mx-auto">
               <div class="mx-auto" id="modal-frame">

@@ -1,3 +1,8 @@
+
+*{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
 :root {
 
  --heartShape: "M150 71.5C117.2 15.0375 25 31.525 25 102.262C25 148.825 79.3125 198.85 141.288 259.012C143.713 261.375 146.863 262.55 150 262.55C153.137 262.55 156.287 261.375 158.712 259.012C220.925 198.625 275 148.837 275 102.262C275 31.2875 182.55 15.4625 150 71.5Z";
@@ -30,14 +35,9 @@ body{
 .frame{
     position: relative;
     /* top: 50%; */
-    /* left: 3%; */
+    left: 3%;
     clip-path: path(var(--heartShape));
 }
-
-/* .frame:focus{
-    clip-path: path(var(--squareShape));
-    cursor: pointer;
-} */
 
 img{
     width: 100%;
@@ -65,10 +65,11 @@ g
 #display_image{
     width: 375px;
     height: 311px;
-    border: 1px solid black;
+    border: 1px dashed gray;
     background-position: center;
     background-size: cover;
 }
 #modal-frame,#display-frame{
+    margin-top: 20px;
     height: 300px;
 }
