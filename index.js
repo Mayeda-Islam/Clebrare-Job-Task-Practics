@@ -1,23 +1,22 @@
+const modalFrame = document.getElementById("modal-frame");
 const image_input = document.getElementById("image_input");
-
-let displayImage = "";
+const modalLabel = document.getElementById("modalTriggerlevel");
+let imageUrl = "";
 image_input.addEventListener("change", function () {
   const reader = new FileReader();
   reader.addEventListener("load", () => {
-    displayImage = reader.result;
-    document.querySelector(
-      "#display_image"
-    ).style.backgroundImage = `url(${displayImage})`;
+    modalLabel.click();
+    imageUrl = reader.result;
+    document.querySelector("#preview_image").src = imageUrl;
   });
   reader.readAsDataURL(this.files[0]);
 });
-
-// different shapes of image
-document.getElementById("frame").addEventListener("click", () => {
-  const frame = document.getElementById("frame");
-  document.getElementById("frame").classList.toggle("pentagon");
-  console.log(frame);
-});
+const displayImage = () => {
+  document.getElementById("display_image").src =
+    document.querySelector("#preview_image").src;
+  document.getElementById("display-frame").className = modalFrame.className;
+  modalLabel.click();
+};
 const rectangle = document.getElementById("rectangle");
 const badge = document.getElementById("badge");
 const star = document.getElementById("star");
@@ -32,16 +31,16 @@ function selectFrame() {
   const buttonId = this.id;
   switch (buttonId) {
     case "rectangle":
-      frame.className = "frame";
+      modalFrame.className = "frame";
       break;
     case "badge":
-      frame.className = "frame badge";
+      modalFrame.className = "frame badge";
       break;
     case "star":
-      frame.className = "frame star";
+      modalFrame.className = "frame star";
       break;
     case "pentagon":
-      frame.className = "frame pentagon";
+      modalFrame.className = "frame pentagon";
       break;
   }
 }
