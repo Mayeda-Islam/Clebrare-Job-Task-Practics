@@ -17,30 +17,35 @@ const displayImage = () => {
   document.getElementById("display-frame").className = modalFrame.className;
   modalLabel.click();
 };
-const rectangle = document.getElementById("rectangle");
-const badge = document.getElementById("badge");
+const circle = document.getElementById("circle");
+const normal = document.getElementById("normal");
+const heart = document.getElementById("heart");
 const star = document.getElementById("star");
-const pentagon = document.getElementById("pentagon");
+const square = document.getElementById("square");
 
-rectangle.addEventListener("click", selectFrame);
-badge.addEventListener("click", selectFrame);
+normal.addEventListener("click", selectFrame);
+circle.addEventListener("click", selectFrame);
+heart.addEventListener("click", selectFrame);
 star.addEventListener("click", selectFrame);
-pentagon.addEventListener("click", selectFrame);
+square.addEventListener("click", selectFrame);
 
 function selectFrame() {
   const buttonId = this.id;
   switch (buttonId) {
-    case "rectangle":
-      modalFrame.className = "frame";
+    case "normal":
+      modalFrame.className = "";
       break;
-    case "badge":
-      modalFrame.className = "frame badge";
+    case "square":
+      modalFrame.className = "frame square";
+      break;
+    case "circle":
+      modalFrame.className = "frame circle";
       break;
     case "star":
       modalFrame.className = "frame star";
       break;
-    case "pentagon":
-      modalFrame.className = "frame pentagon";
+    case "heart":
+      modalFrame.className = "frame heart";
       break;
   }
 }

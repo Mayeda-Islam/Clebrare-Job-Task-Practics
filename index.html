@@ -44,7 +44,7 @@
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="staticBackdropLabel">
@@ -57,17 +57,66 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">
-              <div class="" id="modal-frame">
-                <img id="preview_image" src="" alt="" />
+            <div class="modal-body w-75 h-50 mx-auto">
+              <div class="mx-auto" id="modal-frame">
+                <img id="preview_image" class="w-full" src="" alt="" />
               </div>
             </div>
-            <div class="btn-container">
-              <div class="btn" id="rectangle">rectangle</div>
-              <div class="btn" id="badge">badge</div>
-              <div class="btn" id="pentagon">pentagon</div>
-              <div class="btn" id="star">star</div>
-              <button type="button" onclick="displayImage()">save</button>
+            <div class="btn-container mx-auto">
+              <button id="normal" class="border rounded-2 border-warning p-2">
+                Original
+              </button>
+              <div
+                class="btn border border-warning"
+                style="width: 50px"
+                id="heart"
+              >
+                <img
+                  src="/image/asset/user_image_frame_1.png"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <div
+                class="btn border border-warning"
+                style="width: 50px"
+                id="circle"
+              >
+                <img
+                  src="/image/asset/user_image_frame_3.png"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <div
+                class="btn border border-warning"
+                style="width: 50px"
+                id="square"
+              >
+                <img
+                  src="/image/asset/user_image_frame_2.png"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <div
+                class="btn border border-warning"
+                style="width: 50px"
+                id="star"
+              >
+                <img
+                  src="/image/asset/user_image_frame_4.png"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <button
+                class="p-2 rounded-2 border-0 bg-warning text-white"
+                type="button"
+                onclick="displayImage()"
+              >
+                save
+              </button>
             </div>
           </div>
         </div>
