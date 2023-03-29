@@ -94,13 +94,27 @@ const normal = document.getElementById("normal");
 const heart = document.getElementById("heart");
 const star = document.getElementById("star");
 const square = document.getElementById("square");
+const btnLeft = document.getElementById("btn-left");
+const btnRight = document.getElementById("btn-right");
 
 normal.addEventListener("click", selectFrame);
 circle.addEventListener("click", selectFrame);
 heart.addEventListener("click", selectFrame);
 star.addEventListener("click", selectFrame);
 square.addEventListener("click", selectFrame);
-
+btnLeft.addEventListener("click", selectRotateL);
+btnRight.addEventListener("click", selectRotateR);
+let rotateL = 0;
+let rotateR = 0;
+function selectRotateL() {
+  rotateL = rotateL + -90;
+  croppedFrame.style.transform = `rotate(${rotateL}deg)`;
+}
+function selectRotateR() {
+  console.log("ghurche");
+  rotateR = rotateR + 90;
+  croppedFrame.style.transform = `rotate(${rotateR}deg)`;
+}
 function selectFrame() {
   const buttonId = this.id;
   switch (buttonId) {
