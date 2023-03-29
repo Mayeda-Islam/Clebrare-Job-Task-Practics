@@ -1,20 +1,92 @@
+const croppedFrame = document.getElementById("cropped_image_result");
 const modalFrame = document.getElementById("modal-frame");
 const image_input = document.getElementById("image_input");
 const modalLabel = document.getElementById("modalTriggerlevel");
 let imageUrl = "";
-image_input.addEventListener("change", function () {
-  const reader = new FileReader();
-  reader.addEventListener("load", () => {
+var roundedImage;
+const result = document.getElementById("cropped_image_result");
+roundedImage = document.createElement("img");
+image_input.addEventListener("change", function (e) {
+  // cropper.js codes
+  var files = e.target.files;
+  console.log(files);
+  modalFrame.style.display = "block";
+  roundedImage.src = "";
+  result.innerHTML = "";
+  var done = function (url) {
+    document.getElementById("modal-frame").innerHTML = "";
+    document.getElementById("modal-frame").innerHTML =
+      '<img id="preview_image" class="w-full" src="' + url + '" alt="" />';
+    console.log(document.getElementById("modal-frame"));
     modalLabel.click();
-    imageUrl = reader.result;
-    document.querySelector("#preview_image").src = imageUrl;
+  };
+  if (files && files.length > 0) {
+    const file = files[0];
+    if (URL) {
+      console.log("inside of url", URL);
+      done(URL.createObjectURL(file));
+    } else if (FileReader) {
+      reader = new FileReader();
+      reader.onload = function (e) {
+        console.log("else er modder", reader.result);
+        done(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  var image = document.getElementById("preview_image");
+  var button = document.getElementById("crop_button");
+
+  var croppable = false;
+  var cropper = new Cropper(image, {
+    aspectRatio: 1,
+    viewMode: 1,
+    ready: function () {
+      croppable = true;
+    },
   });
-  reader.readAsDataURL(this.files[0]);
+  button.onclick = function () {
+    var croppedCanvas;
+    var roundedCanvas;
+
+    modalFrame.style.display = "none";
+    if (!croppable) {
+      return;
+    }
+    // Crop;
+    croppedCanvas = cropper.getCroppedCanvas();
+    // Round;
+    roundedCanvas = getRoundedCanvas(croppedCanvas);
+    // Show;
+
+    roundedImage.setAttribute("id", "preview_cropped_image");
+    roundedImage.src = roundedCanvas.toDataURL();
+    result.innerHTML = "";
+    result.appendChild(roundedImage);
+  };
 });
+
+function getRoundedCanvas(sourceCanvas) {
+  var canvas = document.createElement("canvas");
+  var context = canvas.getContext("2d");
+  var width = sourceCanvas.width;
+  var height = sourceCanvas.height;
+  canvas.width = width;
+  canvas.height = height;
+  context.imageSmoothingEnabled = true;
+  context.drawImage(sourceCanvas, 0, 0, width, height);
+  context.globalCompositeOperation = "destination-in";
+  context.beginPath();
+
+  context.fill();
+  return canvas;
+}
+
 const displayImage = () => {
-  document.getElementById("display_image").src =
-    document.querySelector("#preview_image").src;
-  document.getElementById("display-frame").className = modalFrame.className;
+  document.getElementById("display_image").src = document.querySelector(
+    "#preview_cropped_image"
+  ).src;
+  document.getElementById("display-frame").className = croppedFrame.className;
   modalLabel.click();
 };
 const circle = document.getElementById("circle");
@@ -33,19 +105,19 @@ function selectFrame() {
   const buttonId = this.id;
   switch (buttonId) {
     case "normal":
-      modalFrame.className = "";
+      croppedFrame.className = "";
       break;
     case "square":
-      modalFrame.className = "frame square";
+      croppedFrame.className = "frame square";
       break;
     case "circle":
-      modalFrame.className = "frame circle";
+      croppedFrame.className = "frame circle";
       break;
     case "star":
-      modalFrame.className = "frame star";
+      croppedFrame.className = "frame star";
       break;
     case "heart":
-      modalFrame.className = "frame heart";
+      croppedFrame.className = "frame heart";
       break;
   }
 }
